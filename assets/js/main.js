@@ -1,0 +1,1 @@
+$("#log").prepend("<p>main.js loaded</p>");

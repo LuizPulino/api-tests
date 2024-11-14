@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <script src="/assets/js/zepto.min.js"></script>
     <title>Tests</title>
     <style>
-        *{
-            font-family: tahoma;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+
     </style>
 </head>
 <body>
     <h1>Tests</h1>
+    <div id="log"></div>
+    <script>
+        $("#log").prepend("<p>Zepto is working</p>");
+    </script>
 </body>
 </html>
