@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/zepto.min.js"></script>
+    <title>Steps</title>
+    <style>
+        *{
+            font-size: 1.25rem;
+        }
+        img{
+            height: 12em;
+        }
+        div{
+            line-height: 2em;
+        }
+        label{
+            background: #EEE;
+            display: inline-block;
+            width: 4em;
+            text-align: right;
+            padding-right: .5em;
+            margin:.25em 0;
+        }
+        input{
+            padding: .5em;
+            margin: .25em;
+            width:6em;
+            background: #DDD;
+            font-size: 1.5rem;
+        }
+        #t{
+            color: #AAA;
+            background: #AAA;
+        }
+        #x{
+            color: green;
+            background: green;
+        }
+        #y{
+            color: green;
+            background: green;
+        }
+        #z{
+            color:blue;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Acelerômetro!</h1>
+    
+    <img src="/assets/img/eixos.png" alt="eixos">
+    <div><label>Total:</label><span id="t">.......</span></div>
+    <div><label>X:</label><span id="x">..</span></div>
+    <div><label>Y:</label><span id="y">....</span></div>
+    <div><label>Z:</label><span id="z">......</span></div>
+    <input id="start" type="button" value="iniciar">
+    <input id="download" type="button" value="download">
+    <div id="log"></div>
+    <script>
+        log("log messages");
+        let accelerometer = null;
+try {
+  accelerometer = new Accelerometer({ referenceFrame: "device" });
+  accelerometer.addEventListener("error", (event) => {
+    // Handle runtime errors.
+    if (event.error.name === "NotAllowedError") {
+      // Branch to code for requesting permission.
+    } else if (event.error.name === "NotReadableError") {
+      log("Cannot connect to the sensor.");
+    }
+  });
+  accelerometer.addEventListener("reading", () => reloadOnShake(accelerometer));
+  accelerometer.start();
+} catch (error) {
+  // Handle construction errors.
+  if (error.name === "SecurityError") {
+    // See the note above about permissions policy.
+    log("Sensor construction blocked");
+  } else if (error.name === "ReferenceError") {
+    log("Sensor is not supported");
+  } else {
+    throw error;
+  }
+}
+
+        function log(message){
+
+            $("#log").prepend(message+"<br>");
+        }
+    </script>
+</body>
+</html>

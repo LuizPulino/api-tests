@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/zepto.min.js"></script>
+    <title>Steps</title>
+    <style>
+        *{
+            font-size: 1.25rem;
+        }
+        img{
+            height: 12em;
+        }
+        div{
+            line-height: 2em;
+        }
+        label{
+            background: #EEE;
+            display: inline-block;
+            width: 4em;
+            text-align: right;
+            padding-right: .5em;
+            margin:.25em 0;
+        }
+        input{
+            padding: .5em;
+            margin: .25em;
+            width:6em;
+            background: #DDD;
+            font-size: 1.5rem;
+        }
+        #t{
+            color: #AAA;
+            background: #AAA;
+        }
+        #x{
+            color: green;
+            background: green;
+        }
+        #y{
+            color: green;
+            background: green;
+        }
+        #z{
+            color:blue;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Acelerômetro</h1>
+    
+    <img src="/assets/img/eixos.png" alt="eixos">
+    <div><label>Total:</label><span id="t">.......</span></div>
+    <div><label>X:</label><span id="x">..</span></div>
+    <div><label>Y:</label><span id="y">....</span></div>
+    <div><label>Z:</label><span id="z">......</span></div>
+    <input id="start" type="button" value="iniciar">
+    <input id="download" type="button" value="download">
+    <div id="log"></div>
+    <script>
+
+        $("#x").width(100);
+        log("log messages");
+
+        function log(message){
+
+            $("#log").prepend(message+"<br>");
+        }
+    </script>
+</body>
+</html>
